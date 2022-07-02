@@ -1,6 +1,36 @@
-export const addTodo = (payload) => {
+// Todo - actions
+
+export const addTodo = () => {
   return {
-    type: "ADD_TODO",
+    type: "addTodo",
+  };
+};
+
+export const addTodoInput = (payload, id) => {
+  return {
+    type: "addTodoInput",
+    payload,
+    id,
+  };
+};
+export const checkComplete = (payload) => {
+  return {
+    type: "checkComplete",
+    payload,
+  };
+};
+export const deleteTodo = (payload) => {
+  return {
+    type: "deleteTodo",
+    payload,
+  };
+};
+
+// Filter - Actions
+
+export const addSearchInput = (payload) => {
+  return {
+    type: "addSearchInput",
     payload,
   };
 };

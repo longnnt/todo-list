@@ -1,0 +1,14 @@
+.checked {
+  text-decoration: line-through;
+}
+
+.not-checked {
+  text-decoration: none;
+}
+
+.list__todo-item {
+  display: flex;
+}
+.list__todo-item-name {
+  min-width: 200px;
+}

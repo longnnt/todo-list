@@ -1,14 +1,22 @@
-import React, { useState } from "react";
-import store from "../app/store";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectTodoList } from "../features/todoReducer";
+import ListTodoItem from "./ListTodoItem";
 
 function ListTodo() {
-  const [listTodo] = useState(store.getState().todoList);
-  console.log(store.getState().todoList);
+  const listTodo = useSelector(selectTodoList);
+
   return (
     <div>
-      {listTodo.map((todo) => (
-        <div>{todo}</div>
-      ))}
+      {listTodo &&
+        listTodo.map((todo, index) => (
+          <ListTodoItem
+            key={index}
+            name={todo.name}
+            id={todo.id}
+            isChecked={todo.isCompleted}
+          />
+        ))}
     </div>
   );
 }
