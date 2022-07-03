@@ -27,7 +27,8 @@ function filterReducer(state = initialState, action) {
         updateStatus = false;
         updateMessage = "";
       } else if (action.payload.value === "") {
-        updateList = state.filterList.filterListTodo;
+        updateList = state.filterList.filterListCheck;
+        console.log(updateList);
         updateStatus = true;
         updateMessage = "";
       }
