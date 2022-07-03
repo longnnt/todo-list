@@ -6,6 +6,7 @@ import Checkbox from "./Checkbox";
 
 function ListTodoItem({ name, isChecked, id }) {
   const dispatch = useDispatch();
+
   const handleDeleteTodo = () => {
     dispatch(deleteTodo(id));
   };

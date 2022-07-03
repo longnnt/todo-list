@@ -1,5 +1,6 @@
 const inititalState = {
-  todoList: [],
+  todoList: JSON.parse(localStorage.getItem("listTodo")) || [],
+  status: true,
   todoInput: {
     name: "",
     isCompleted: false,
@@ -8,9 +9,11 @@ const inititalState = {
 function todoReducer(state = inititalState, action) {
   switch (action.type) {
     case "addTodo":
+      const upadateTodoList = [...state.todoList, state.todoInput];
+      localStorage.setItem("listTodo", JSON.stringify(upadateTodoList));
       return {
         ...state,
-        todoList: [...state.todoList, state.todoInput],
+        todoList: upadateTodoList,
       };
     case "addTodoInput":
       return {
@@ -18,7 +21,7 @@ function todoReducer(state = inititalState, action) {
         todoInput: {
           ...state.todoInput,
           id: action.id,
-          name: action.payload,
+          name: action.payload.trim(),
         },
       };
     case "checkComplete":
@@ -33,6 +36,8 @@ function todoReducer(state = inititalState, action) {
       };
       const updateList = [...state.todoList];
       updateList.splice(indexOfTodoCheck, 1, todoUpdateCheck);
+      // up to localStorage
+      localStorage.setItem("listTodo", JSON.stringify(updateList));
       return {
         ...state,
         todoList: updateList,
@@ -45,6 +50,8 @@ function todoReducer(state = inititalState, action) {
       const indexDeleteTodo = state.todoList.indexOf(todoDelete);
       const updateListDelete = [...state.todoList];
       updateListDelete.splice(indexDeleteTodo, 1);
+      // up to localStorage
+      localStorage.setItem("listTodo", JSON.stringify(updateListDelete));
       return {
         ...state,
         todoList: updateListDelete,

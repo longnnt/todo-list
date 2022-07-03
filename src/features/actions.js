@@ -34,3 +34,10 @@ export const addSearchInput = (payload) => {
     payload,
   };
 };
+
+export const checkCompleteFilter = (payload) => {
+  return {
+    type: "checkCompleteFilter",
+    payload,
+  };
+};
