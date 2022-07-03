@@ -41,3 +41,22 @@ export const checkCompleteFilter = (payload) => {
     payload,
   };
 };
+
+export const statusCheck = (payload) => {
+  return {
+    type: "statusCheck",
+    payload,
+  };
+};
+export const filterCheckbox = (payload) => {
+  return {
+    type: "filterCheckbox",
+    payload,
+  };
+};
+export const clearSearchInput = (payload) => {
+  return {
+    type: "clearSearchInput",
+    payload,
+  };
+};
