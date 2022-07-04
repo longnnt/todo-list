@@ -7,6 +7,7 @@ import {
 } from "../features/filterReducer";
 import { selectTodoList } from "../features/todoReducer";
 import ListTodoItem from "./ListTodoItem";
+import "../css/ListTodo.css";
 
 function ListTodo() {
   const listTodo = useSelector(selectTodoList);
@@ -21,13 +22,14 @@ function ListTodo() {
     }
   };
   return (
-    <div>
+    <div className="list-todo">
       {listOrFilter().map((todo, index) => (
         <ListTodoItem
           key={index}
           name={todo.name}
           id={todo.id}
           isChecked={todo.isCompleted}
+          edit={todo.edit}
         />
       ))}
       {messageFilter && filterStatus && <span>{messageFilter}</span>}

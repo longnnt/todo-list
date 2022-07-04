@@ -3,15 +3,20 @@ import FilterTodo from "./components/FilterTodo";
 import FormTodo from "./components/FormTodo";
 import ListTodo from "./components/ListTodo";
 import SearchTodo from "./components/SearchTodo";
+import "./css/App.css";
 function App() {
   return (
-    <>
-      <h1>Todo App</h1>
-      <SearchTodo />
-      <FilterTodo />
-      <ListTodo />
-      <FormTodo />
-    </>
+    <div className="App">
+      <div className="container">
+        <div className="header">
+          <h1 className="title-app">Todo App</h1>
+          <SearchTodo />
+        </div>
+        <FilterTodo />
+        <ListTodo />
+        <FormTodo />
+      </div>
+    </div>
   );
 }
 

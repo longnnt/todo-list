@@ -1,0 +1,18 @@
+.color-checked {
+  color: #910ee2;
+}
+
+.color-un-checked {
+  color: #333;
+}
+
+.color-checked,
+.color-un-checked {
+  font-size: 22px;
+}
+
+input[type="checkbox"] {
+  width: 100px;
+  height: 20px;
+  border-radius: 50%;
+}

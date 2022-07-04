@@ -28,7 +28,6 @@ function filterReducer(state = initialState, action) {
         updateMessage = "";
       } else if (action.payload.value === "") {
         updateList = state.filterList.filterListCheck;
-        console.log(updateList);
         updateStatus = true;
         updateMessage = "";
       }
@@ -74,6 +73,21 @@ function filterReducer(state = initialState, action) {
           status: state.status === "All" ? false : action.payload.status,
         },
         message: "",
+      };
+    case "deleteTodoFilter":
+      const copyFilterListTodo = [...state.filterList.filterListTodo];
+      const updateListDeleteTodo = copyFilterListTodo.find(
+        (todo) => todo.id === action.payload
+      );
+      const indexOfDeleteTodoFilter =
+        copyFilterListTodo.indexOf(updateListDeleteTodo);
+      copyFilterListTodo.splice(indexOfDeleteTodoFilter, 1);
+      return {
+        ...state,
+        filterList: {
+          ...state.filterList,
+          filterListTodo: copyFilterListTodo,
+        },
       };
     default:
       return state;

@@ -8,7 +8,29 @@
 
 .list__todo-item {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  position: relative;
 }
 .list__todo-item-name {
-  min-width: 200px;
+  min-width: 300px;
+  font-size: 20px;
+  border-bottom: 1px solid #999;
+  margin-right: 12px;
+}
+
+.input-todo-edit {
+  min-width: 276px;
+  margin-right: 10px;
+  border: none;
+}
+.btn-delete,
+.btn-edit,
+.btn-close {
+  width: 28px;
+  height: 26px;
+}
+.btn-edit {
+  margin-right: 10px;
 }

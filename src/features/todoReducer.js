@@ -5,6 +5,7 @@ const inititalState = {
     name: "",
     isCompleted: false,
   },
+  editTodo: "",
 };
 function todoReducer(state = inititalState, action) {
   switch (action.type) {
@@ -22,6 +23,7 @@ function todoReducer(state = inititalState, action) {
           ...state.todoInput,
           id: action.id,
           name: action.payload.trim(),
+          edit: false,
         },
       };
     case "checkComplete":
@@ -56,10 +58,53 @@ function todoReducer(state = inititalState, action) {
         ...state,
         todoList: updateListDelete,
       };
+    case "editTodo":
+      // console.log(action.payload.editTodoInputString);
+      const coppyTodoList = [...state.todoList];
+      let updateEditTodo = coppyTodoList.find(
+        (todo) => todo.id === action.payload.id
+      );
+      console.log(updateEditTodo);
+      const indexOfEditTodo = coppyTodoList.indexOf(updateEditTodo);
+      if (action.payload.close) {
+        updateEditTodo = {
+          ...updateEditTodo,
+          name: { ...updateEditTodo }.name,
+          edit: action.payload.status,
+        };
+        coppyTodoList.splice(indexOfEditTodo, 1, updateEditTodo);
+
+        localStorage.setItem("listTodo", JSON.stringify(coppyTodoList));
+        return {
+          ...state,
+          todoList: coppyTodoList,
+        };
+      }
+      updateEditTodo = {
+        ...updateEditTodo,
+        name:
+          (!/^$/.test(action.payload.editTodoInputString) &&
+            action.payload.editTodoInputString) ||
+          updateEditTodo.name,
+        edit: action.payload.status,
+      };
+      coppyTodoList.splice(indexOfEditTodo, 1, updateEditTodo);
+      // update len localStorage
+      localStorage.setItem("listTodo", JSON.stringify(coppyTodoList));
+      return {
+        ...state,
+        todoList: coppyTodoList,
+      };
+    case "editTodoInput":
+      return {
+        ...state,
+        editTodo: action.payload,
+      };
     default:
       return state;
   }
 }
 
 export const selectTodoList = (state) => state.todo.todoList;
+export const editTodoState = (state) => state.todo.editTodo;
 export default todoReducer;

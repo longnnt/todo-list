@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { statusState } from "../features/filterReducer";
+import "../css/Checkbox.css";
 
 function Checkbox({ isChecked, onHandleChecked, title }) {
   const statusCheckbox = useSelector(statusState);
@@ -16,7 +17,13 @@ function Checkbox({ isChecked, onHandleChecked, title }) {
         checked={isChecked}
         onChange={() => onHandleChecked(title)}
       />
-      <span>{title}</span>
+      <span
+        className={
+          statusCheckbox === title ? `color-checked` : `color-un-checked`
+        }
+      >
+        {title}
+      </span>
     </div>
   );
 }

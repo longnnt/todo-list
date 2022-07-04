@@ -1,4 +1,30 @@
 .form-input,
 .search-input {
-  min-width: 200px;
+  min-width: 212px;
+}
+
+.form-todo {
+  margin-bottom: 14px;
+}
+.search-input {
+  padding: 8px 20px;
+  line-height: 1.5;
+  outline: none;
+  border: none;
+}
+.form-input {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  margin-right: 20px;
+}
+.form-input::placeholder {
+  color: #999;
+}
+.btn-add {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: #abc9ff;
+  color: #1a4d2e;
 }
