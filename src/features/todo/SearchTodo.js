@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../app/store";
-import "../css/FormTodo.css";
-import { addSearchInput } from "../features/actions";
-import { searchInputState, statusState } from "../features/filterReducer";
+import store from "../../app/store";
+import "./FormTodo.css";
+import { search } from "../filter/filterSlice";
+import { searchInputState, statusState } from "../filterReducer";
 
 function SearchTodo() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function SearchTodo() {
   const searchInput = useSelector(searchInputState);
   const handleSearchInput = (e) => {
     dispatch(
-      addSearchInput({
+      search({
         value: e.target.value,
         todoList:
           status === "All"

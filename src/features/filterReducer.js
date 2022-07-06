@@ -16,31 +16,32 @@ function filterReducer(state = initialState, action) {
         state.status === "All"
           ? action.payload.todoList
           : state.filterList.filterListCheck;
-      let updateList = list.filter((item) =>
+      let updatedList = list.filter((item) =>
         item.name.toLowerCase().includes(action.payload.value.toLowerCase())
       );
-      let updateMessage = state.message;
-      updateMessage = "";
-      let updateStatus = action.payload.status;
+      let updatedMessage = state.message;
+      updatedMessage = "";
+      let updatedStatus = action.payload.status;
       if (action.payload.value === "" && state.status === "All") {
-        updateList = [];
-        updateStatus = false;
-        updateMessage = "";
+        updatedList = [];
+        updatedStatus = false;
+        updatedMessage = "";
       } else if (action.payload.value === "") {
-        updateList = state.filterList.filterListCheck;
-        updateStatus = true;
-        updateMessage = "";
+        updatedList = state.filterList.filterListCheck;
+        updatedStatus = true;
+        updatedMessage = "";
       }
-      if (updateList.length <= 0) updateMessage = "Không tìm thấy message này";
+      if (updatedList.length <= 0)
+        updatedMessage = "Không tìm thấy message này";
       return {
         ...state,
         search: action.payload.value,
         filterList: {
           ...state.filterList,
-          filterListTodo: updateList,
-          status: updateStatus,
+          filterListTodo: updatedList,
+          status: updatedStatus,
         },
-        message: updateMessage,
+        message: updatedMessage,
       };
     case "clearSearchInput":
       return {
@@ -48,11 +49,11 @@ function filterReducer(state = initialState, action) {
         search: "",
       };
     case "statusCheck":
-      const updateState = {
+      const updatedState = {
         ...state,
         status: action.payload,
       };
-      return updateState;
+      return updatedState;
     case "filterCheckbox":
       const listFilterComplete = action.payload.list;
       let checkStatus = false;
@@ -61,26 +62,27 @@ function filterReducer(state = initialState, action) {
       } else if (state.status === "Incomplete") {
         checkStatus = false;
       }
-      const updateListFilterComplete = listFilterComplete.filter(
+      const updatedListFilterComplete = listFilterComplete.filter(
         (item) => item.isCompleted === checkStatus
       );
       return {
         ...state,
         filterList: {
           ...state.filterList,
-          filterListTodo: updateListFilterComplete,
-          filterListCheck: updateListFilterComplete,
+          filterListTodo: updatedListFilterComplete,
+          filterListCheck: updatedListFilterComplete,
           status: state.status === "All" ? false : action.payload.status,
         },
         message: "",
       };
     case "deleteTodoFilter":
       const copyFilterListTodo = [...state.filterList.filterListTodo];
-      const updateListDeleteTodo = copyFilterListTodo.find(
+      const updatedListDeleteTodo = copyFilterListTodo.find(
         (todo) => todo.id === action.payload
       );
-      const indexOfDeleteTodoFilter =
-        copyFilterListTodo.indexOf(updateListDeleteTodo);
+      const indexOfDeleteTodoFilter = copyFilterListTodo.indexOf(
+        updatedListDeleteTodo
+      );
       copyFilterListTodo.splice(indexOfDeleteTodoFilter, 1);
       return {
         ...state,

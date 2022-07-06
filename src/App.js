@@ -1,8 +1,8 @@
 import React from "react";
-import FilterTodo from "./components/FilterTodo";
-import FormTodo from "./components/FormTodo";
+import FilterTodo from "./features/filter/FilterTodo";
+import FormTodo from "./features/todo/FormTodo";
 import ListTodo from "./components/ListTodo";
-import SearchTodo from "./components/SearchTodo";
+import SearchTodo from "./features/todo/SearchTodo";
 import "./css/App.css";
 function App() {
   return (

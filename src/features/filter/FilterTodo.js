@@ -1,23 +1,20 @@
 import React from "react";
-import Checkbox from "./Checkbox";
-import "../css/FilterTodo.css";
-import { useDispatch } from "react-redux";
-import {
-  clearSearchInput,
-  filterCheckbox,
-  statusCheck,
-} from "../features/actions";
-import store from "../app/store";
+import Checkbox from "../../components/Checkbox";
+import { useDispatch, useSelector } from "react-redux";
+import { clearSearchInput, filterCheckbox, statusCheck } from "./filterSlice";
+import { selectTodoList } from "../todo/todoSlice";
+import "./FilterTodo.css";
 
 function FilterTodo() {
   const dispatch = useDispatch();
+  const todoList = useSelector(selectTodoList);
 
   const handleCheck = (title) => {
     dispatch(clearSearchInput());
     dispatch(statusCheck(title));
     dispatch(
       filterCheckbox({
-        list: store.getState().todo.todoList,
+        todoList,
         status: true,
       })
     );

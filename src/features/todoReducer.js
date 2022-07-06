@@ -21,8 +21,8 @@ function todoReducer(state = inititalState, action) {
         ...state,
         todoInput: {
           ...state.todoInput,
-          id: action.id,
-          name: action.payload.trim(),
+          id: action.payload.id,
+          name: action.payload.value.trim(),
           edit: false,
         },
       };

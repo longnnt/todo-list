@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { statusState } from "../features/filterReducer";
+import { statusState } from "../features/filter/filterSlice";
 import "../css/Checkbox.css";
 
 function Checkbox({ isChecked, onHandleChecked, title }) {

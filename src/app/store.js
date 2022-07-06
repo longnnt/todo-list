@@ -1,16 +1,12 @@
-import { combineReducers, createStore, applyMiddleware } from "redux";
-import filterReducer from "../features/filterReducer";
-import todoReducer from "../features/todoReducer";
-import { loggerMiddleware } from "../middleware/logger";
+import { configureStore } from "@reduxjs/toolkit";
+import filterReducer from "../features/filter/filterSlice";
+import todoReducer from "../features/todo/todoSlice";
 
-const middlewareEnhancer = applyMiddleware(loggerMiddleware);
-
-const store = createStore(
-  combineReducers({
+const store = configureStore({
+  reducer: {
     todo: todoReducer,
     filter: filterReducer,
-  }),
-  middlewareEnhancer
-);
+  },
+});
 
 export default store;

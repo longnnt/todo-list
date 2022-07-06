@@ -6,11 +6,10 @@ export const addTodo = () => {
   };
 };
 
-export const addTodoInput = (payload, id) => {
+export const addTodoInput = (payload) => {
   return {
     type: "addTodoInput",
     payload,
-    id,
   };
 };
 export const checkComplete = (payload) => {

@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { addTodo, addTodoInput } from "../features/actions";
 import { v4 as uuidv4 } from "uuid";
-import "../css/FormTodo.css";
+import "./FormTodo.css";
 import { useDispatch } from "react-redux";
 import { MdAddTask } from "react-icons/md";
+import { addTodo, addTodoInput } from "./todoSlice";
 
 function FormTodo() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function FormTodo() {
   };
 
   const handleInput = (e) => {
-    dispatch(addTodoInput(e.target.value, uuidv4()));
+    dispatch(addTodoInput({ value: e.target.value, id: uuidv4() }));
   };
   return (
     <div className="form-todo">
