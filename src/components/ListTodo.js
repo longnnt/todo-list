@@ -53,6 +53,8 @@ function ListTodo() {
           status,
         })
       );
+    } else {
+      window.alert("Vui không không để trống");
     }
   };
   const handleCloseTodoEdit = (id, status, close) => {
